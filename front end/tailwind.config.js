@@ -5,6 +5,20 @@ module.exports = {
   ],
   theme: {
     extend: {
+
+      fontFamily  :{
+        poppins: ["Poppins", "sans-serif"],
+        adelia: ["ADELIA", "cursive"],
+        sans:[ 'Josefin Sans',' sans-serif'],
+        Lora: ['Lora', 'serif'],
+        varela: ['Varela', 'sans-serif'],
+        varelaround : ['Varela Round', 'sans-serif']
+           
+      
+      },
+
+
+
       colors:{
         nav:{
             50: '#f2f2f2',
