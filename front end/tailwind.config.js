@@ -6,6 +6,12 @@ module.exports = {
   theme: {
     extend: {
 
+      backgroundImage: {
+        'loginbg': "url('../../assets/loginbg.jpg')",
+        
+        'signupbg': "url('/img/footer-texture.png')",
+      },
+
       fontFamily  :{
         poppins: ["Poppins", "sans-serif"],
         adelia: ["ADELIA", "cursive"],

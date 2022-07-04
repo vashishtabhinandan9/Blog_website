@@ -32,9 +32,9 @@ export default function Settings() {
           </div>
           <div className='mt-4 flex flex-col w-11/12 gap-4 '> 
           <label>Username</label>
-          <input className='border-b-2 border-gray-100 pl-4' type="text" placeholder="Safak" name="name" />
+          <input className='border-b-2 border-gray-100 pl-4' type="text" placeholder="Name" name="name" />
           <label>Email</label>
-          <input className='border-b-2 border-gray-100 pl-4' type="email" placeholder="safak@gmail.com" name="email" />
+          <input className='border-b-2 border-gray-100 pl-4' type="email" placeholder="Name@gmail.com" name="email" />
           <label>Password</label>
           <input className='border-b-2 border-gray-100 pl-4' type="password" placeholder="Password" name="password" />
           </div>
