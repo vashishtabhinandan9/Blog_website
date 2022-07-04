@@ -6,18 +6,37 @@ import Write from "./pages/Write.page/Write.page";
 import Settings from "./pages/Settings.page";
 import Signin from "./pages/Register.page/Signin.page";
 import Signup from "./pages/Register.page/Signup.page";
+import {  
+  BrowserRouter as Router,  
+  Routes,  
+  Route,  
+  Link }   
+from 'react-router-dom';  
+
 
 function App() {
+  const user=true;
   return (  
   <>
-      <Navbar/>
-    {  /*<HomePage/>*/}
-    {/*<PostInfoPage/>*/}
-    {/*<Write/>*/}
-    {/*<Settings/>*/}
-     {/*<Signin/>*/}
+ <Navbar/>
+  <Routes>
+    <Route path="/" exact element= {<HomePage/>} />
+    <Route path="/posts" exact element= {<HomePage/>} />
+    <Route path="/post/:id" exact element=  {<PostInfoPage/>}/>
+    <Route path="/write" exact element= {user ? <Write /> : <Signin />} />
+    <Route path="/settings" exact element=   {user ? <Settings /> : <Signin />} />
+    <Route path="/login" exact element= {user ? <HomePage /> : <Signin />} />
+    <Route path="/register" exact element=  {user ? <HomePage /> : <Signup />} />
+  </Routes>
 
-     <Signup/>
+
+     
+   
+ 
+    
+     
+
+     
 
 
       <h1 className="text-3xl font-bold underline">
@@ -26,7 +45,6 @@ function App() {
 </>
       
   
-  );
-}
+  )}
 
 export default App;
