@@ -1,11 +1,11 @@
 const router= require("express").Router()
 
-const {register,login} =require("../Controller/auth.controller")
+const {getuserbyid,deleteuser,updateuser} =require("../Controller/user.controller")
 //get all user
-router.get("/",register);
+router.get("/:id",getuserbyid);
 //update
-router.put("/",login);
+router.put("/:id",updateuser);
 //delete
-router.delete("/",login);
+router.delete("/:id",deleteuser);
 
 module.exports=router;
