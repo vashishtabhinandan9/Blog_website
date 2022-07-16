@@ -63,7 +63,7 @@ export default function Navbar () {
         </div>
 
         <div className='searchIcon mr-8 cursor-pointer'>
-        <i class="fa-solid fa-magnifying-glass"></i>
+        <i className="fa-solid fa-magnifying-glass"></i>
         </div>
       </div>
 

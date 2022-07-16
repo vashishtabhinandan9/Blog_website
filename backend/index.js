@@ -35,6 +35,8 @@ const storage = multer.diskStorage({
 
   //host
 console.log("hfaeowh");
-app.listen(3000,()=>{
+
+app.listen(5000,()=>{
+  
     console.log("server up");
 })
