@@ -1,15 +1,11 @@
 //single post data 
 import React from 'react'
-import {  
-  BrowserRouter as Router,  
-  Routes,  
-  Route,  
-  Link }   
-from 'react-router-dom';  
+import { Link }from 'react-router-dom';  
 
 import "./Postdata.style.css"
 
 export default function Postdata({info}) {
+  
   return(
     <>
     <Link to={`/post/${info._id}`}>
@@ -22,13 +18,17 @@ export default function Postdata({info}) {
       />
       <div className="postInfo">
         <div className="postCats">
-               
+         
+               {info.categories.map((c) => (
+            <span className="postCat">{c}</span>
+          ))}
         </div>
-        
+        <Link to={`/post/${info._id}`}>
         <span className="postTitle">
 
            {info.title}
         </span>
+        </Link>
        
         
         <hr />
@@ -38,8 +38,8 @@ export default function Postdata({info}) {
         {info.desc}
       </p>
       </div>
-        
       </Link>
+     
     
     </>
   
