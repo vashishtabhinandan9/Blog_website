@@ -6,7 +6,19 @@ export default function Sidebar() {
 
   const [cat,setCat]=useState([]);
 
- 
+  useEffect(()=>{
+    const getcategory=async ()=>{
+      const res= await axios.get("/categories");
+    
+      setCat(res.data);
+
+    }
+
+    getcategory();
+  },[])
+
+
+
   return (
     <>
     <div className=' w-80 max-h-max bg-gray-100 '>
