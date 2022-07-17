@@ -1,20 +1,44 @@
 import React from 'react'
-
+import { useEffect,useState } from 'react';
+import axios from "axios";
+import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 export default function SinglePost() {
+
+ const location = useLocation()
+
+ const [post,setPost]= useState({});
+
+ const path=location.pathname.split("/")[2]; 
+console.log(path);
+ useEffect(()=>{
+  const getpostbyID = async ()=>{
+    const res = await axios.get("/post/"+path) 
+    console.log(res);
+    setPost(res.data)
+    window.scrollTo(0,0)
+  }
+
+  getpostbyID();
+ 
+}
+,[path]);
+
   return (
     <>
-    <div className='singlePost flex-auto border-8 max-h-full border-red-300'> 
+    <div className='singlePost flex-auto  max-h-full '> 
     
     
       <div className="singlePostWrapper p-2 pr-0">
         <img
-          className="singlePostImg object-cover pr-2 border-red-300"
-          src="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          className="singlePostImg object-cover pr-2  rounded-md"
+          src={post.photo}
           alt=""
         />
+
         <div className="singlePostTitle font-varela text-5xl text-center mt-4  flex items-center ">
           
-          <h1 className='flex-auto'>Lorem ipsum dolor</h1>
+          <h1 className='flex-auto'>{post.title}</h1>
           <div className="singlePostEdit float-right mr-4  flex gap-4  text-2xl ">
             <i className="singlePostIcon far fa-edit text-green-500 cursor-pointer"></i>
             <i className="singlePostIcon far fa-trash-alt text-red-600 cursor-pointer"></i>
@@ -23,41 +47,19 @@ export default function SinglePost() {
         <div className="singlePostInfo mt-4">
           <span className='text-orange-400 font-varelaround'>
             Author:
+
+            <Link to={`/?user=${post.username}`}>
             <b className="singlePostAuthor">
-                abhinandan
+                {post.username}
             </b>
+            </Link>
+            
           </span>
-          <span className='float-right mr-4 text-gray-400 font-varelaround'>1 day ago</span>
+          <span className='float-right mr-4 text-gray-400 font-varelaround'>{new Date(post.createdAt).toDateString()}</span>
         </div>
         <p className="singlePostDesc mt-4 p-4 leading-1 text-gray-500 text-xl  first-letter:text-4xl first-letter:font-bold">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste error
-          quibusdam ipsa quis quidem doloribus eos, dolore ea iusto impedit!
-          Voluptatum necessitatibus eum beatae, adipisci voluptas a odit modi
-          eos! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste
-          error quibusdam ipsa quis quidem doloribus eos, dolore ea iusto
-          impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas a
-          odit modi eos! Lorem, ipsum dolor sit amet consectetur adipisicing
-          elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea
-          iusto impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas
-          a odit modi eos! Lorem, ipsum dolor sit amet consectetur adipisicing
-          elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea
-          iusto impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas
-          a odit modi eos! Lorem, ipsum dolor sit amet consectetur adipisicing
-          elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea
-          iusto impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas
-          a odit modi eos!
-          <br />
-          <br />
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste error
-          quibusdam ipsa quis quidem doloribus eos, dolore ea iusto impedit!
-          Voluptatum necessitatibus eum beatae, adipisci voluptas a odit modi
-          eos! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste
-          error quibusdam ipsa quis quidem doloribus eos, dolore ea iusto
-          impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas a
-          odit modi eos! Lorem, ipsum dolor sit amet consectetur adipisicing
-          elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea
-          iusto impedit! Voluptatum necessitatibus eum beatae, adipisci voluptas
-          a odit modi eos! Lorem, ipsum dolor sit amet consectetur.
+         {post.desc}
+         
         </p>
       </div>
     

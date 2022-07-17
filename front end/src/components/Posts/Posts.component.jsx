@@ -11,6 +11,7 @@ export default function Posts({ allpost }) {
     <>
      <div className='flex-auto border-8 max-h-full mt-2 border-green-500 flex flex-wrap'>
        
+    
       {
       
       allpost.map((post) =>{

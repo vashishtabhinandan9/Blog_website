@@ -8,22 +8,21 @@ import axios from "axios";
 import { useLocation } from "react-router";
 
 export default function HomePage() {
-  
-  const [posts, setPosts] = useState([]);
- // const { search } = useLocation();
 
+  const [posts, setPosts] = useState([]);
+ const {search}= useLocation();
+ console.log(search);
+ 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("/post");
+      const res = await axios.get("/post"+search);
       setPosts(res.data);
       console.log(res);
     };
     fetchPosts();
-  }, []);
-
+  }, [search]);
 
   return (
-
     <>
     <HomeHeader/>
     <div className='flex '>
