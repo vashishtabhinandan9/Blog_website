@@ -7,8 +7,8 @@ import { Context } from '../../context/Context';
 export default function Signin() {
   const userRef = useRef();
   const passwordRef = useRef();
-  const { user,dispatch, isFetching } = useContext(Context);
-
+  const { user , dispatch, isFetching } = useContext(Context);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
@@ -21,9 +21,11 @@ export default function Signin() {
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
     }
+    
   };
+ 
+  console.log(user); 
 
-console.log(isFetching);
   return (
 
     <>

@@ -5,7 +5,7 @@ import Postdata from '../Postdata/Postdata.component'
 
 
 export default function Posts({ allpost }) {
-  console.log("2nd" +allpost);
+  //console.log("2nd" +allpost);
 
   return (
     <>

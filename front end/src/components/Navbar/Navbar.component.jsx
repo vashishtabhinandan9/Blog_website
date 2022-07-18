@@ -4,7 +4,13 @@ import { Context } from '../../context/Context';
 import { useContext } from 'react';
 
 export default function Navbar () {
-  const {user}=useContext(Context);
+  const {user,dispatch}=useContext(Context);
+
+  const handleLogout=()=>{
+    dispatch({ type: "LOGOUT" }); 
+  }
+
+
   return (
 
     <>
@@ -32,7 +38,7 @@ export default function Navbar () {
             </Link>
           </li>
          
-          {user && <li className="topListItem cursor-pointer">LOGOUT</li>}
+          {user && <li className="topListItem cursor-pointer" onClick={handleLogout}>LOGOUT</li>}
          
         </ul>
       </div>
@@ -42,9 +48,9 @@ export default function Navbar () {
           user&&<div className='profilePicture cursor-pointer h-16 w-16  object-center 
         rounded-full border-8 border-indigo-600 '>
             
-            <img  className="object-cover object-center  h-full w-full rounded-full"src="https://th.bing.com/th/id/OIP.telKGniTl6KmAgxs9VKbogHaFj?w=248
-            &h=185&c=7&r=0&o=5&dpr=1.5
-            &pid=1.7" alt="person" />
+            <img  className="object-cover object-center  h-full w-full rounded-full"
+            src={user.data.otherdata.profilePic}
+            alt="person" />
           
         </div>
          }
