@@ -4,7 +4,7 @@ import React from 'react'
   return (
   <>
   <div className='header'>
-    <div className='headerTitle mt-16 sticky bg-white  top-24 w-full h-16  mx-auto'>
+    <div className='headerTitle  sticky bg-white  top-24 w-full h-16  mx-auto'>
       <h1 className="Heading text-center text-4xl text-nav-800 font-sans">WELCOME</h1>
     </div>
 

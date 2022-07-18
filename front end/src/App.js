@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "./components/Navbar/Navbar.component";
 import HomePage from "./pages/Home.page";
 import PostInfoPage from "./pages/PostInfo.page";
@@ -12,10 +12,10 @@ import {
   Route,  
   Link }   
 from 'react-router-dom';  
-
+import { Context } from "./context/Context";
 
 function App() {
-  const user=false;
+  const {user}=useContext(Context);
   return (  
   <>
  <Navbar/>

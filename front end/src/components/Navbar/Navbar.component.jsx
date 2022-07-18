@@ -1,12 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Context } from '../../context/Context';
+import { useContext } from 'react';
 
 export default function Navbar () {
- const user=false;
+  const {user}=useContext(Context);
   return (
 
     <>
-    <div className=' z-[999] h-30 w-full flex items-center bg-slate-50/10 pt-4 text-3xl text-nav-300 mb-1 border-8 border-indigo-600 sticky bg-gray-100 top-0 left-0'>
+    <div className=' z-[999] h-30 w-full flex items-center bg-slate-50/10 pt-4 text-3xl text-nav-300 mb-1  sticky bg-gray-100 top-0 left-0'>
       
       <div className=" topLeft  flex justify-center flex-auto gap-4">
         <i className="topIcon cursor-pointer fab fa-facebook-square"></i>
