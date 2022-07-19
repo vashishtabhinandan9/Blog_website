@@ -4,7 +4,8 @@ import axios from "axios";
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 export default function SinglePost() {
-
+  const PF = "http://localhost:5000/imagesformulter/";
+ 
  const location = useLocation()
 
  const [post,setPost]= useState({});
@@ -32,7 +33,7 @@ console.log(path);
       <div className="singlePostWrapper p-2 pr-0">
         <img
           className="singlePostImg object-cover pr-2  rounded-md"
-          src={post.photo}
+          src={PF+post.photo}
           alt=""
         />
 

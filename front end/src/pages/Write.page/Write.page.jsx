@@ -37,9 +37,7 @@ export default function Write() {
       console.log(newPost); 
       //console.log(proxy);
      const res= await axios.post("/post",newPost)
-     
-      window.location.replace("/");
-      //window.location.replace("/post/" + res.data._id);
+      window.location.replace("/post/" + res.data._id);
     }catch(err){
       console.log(err);
      }

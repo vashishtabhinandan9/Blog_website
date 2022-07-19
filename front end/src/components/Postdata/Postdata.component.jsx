@@ -5,14 +5,14 @@ import { Link }from 'react-router-dom';
 import "./Postdata.style.css"
 
 export default function Postdata({info}) {
-  //const PF = "http://localhost:5000/imagesformulter/";
+  const PF = "http://localhost:5000/imagesformulter/";
   return(
     <>
     <Link to={`/post/${info._id}`}>
       <div className="post">
       <img
         className="postImg"
-        src={info.photo}
+        src={PF + info.photo}
         alt=""
       />
       <div className="postInfo">
