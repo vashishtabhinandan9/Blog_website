@@ -46,7 +46,7 @@ export default function Navbar () {
       <div className="topRight  flex justify-around flex-auto items-center font-sans text-xl h-16 w-16 ">
       {
           user&&<div className='profilePicture cursor-pointer h-16 w-16  object-center 
-        rounded-full border-8 border-indigo-600 '>
+        rounded-full border-2 border-black '>
             
             <img  className="object-cover object-center  h-full w-full rounded-full"
             src={user.data.otherdata.profilePic}
