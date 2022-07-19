@@ -9,7 +9,7 @@ export default function Posts({ allpost }) {
 
   return (
     <>
-     <div className='flex-auto border-8 max-h-full mt-2 border-green-500 flex flex-wrap'>
+     <div className='flex-auto  max-h-full mt-2  flex flex-wrap'>
        
     
       {

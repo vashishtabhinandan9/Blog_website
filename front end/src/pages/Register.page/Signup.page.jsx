@@ -15,6 +15,8 @@ import axios from 'axios';
   const handleSubmit= async (e)=>{
    e.preventDefault();//this prevent the default code
    setError(false);
+
+  
     try {
       const res = await axios.post("/register", {
         username,

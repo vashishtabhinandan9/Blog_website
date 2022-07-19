@@ -14,7 +14,7 @@ export default function Sidebar() {
 
     }
 
-    getcategory();
+    getcategory(); 
   },[])
 
 

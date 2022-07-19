@@ -8,16 +8,20 @@ import { Context } from "../../context/Context";
 export default function Write() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState(null);//for image
   const { user } = useContext(Context);
-
+ 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+   
+     e.preventDefault();
     const newPost = {
-      username: user.username,
-      title,
-      desc,
+      "username": user.data.otherdata.username,
+      "title":title,
+      "desc":desc,
     };
+
+
+    
     if (file) {
       const data =new FormData();
       const filename = Date.now() + file.name;
@@ -28,11 +32,19 @@ export default function Write() {
         await axios.post("/upload", data);
       } catch (err) {}
     }
-    try {
-      const res = await axios.post("/posts", newPost);
-      window.location.replace("/post/" + res.data._id);
-    } catch (err) {}
-  };
+    
+    try{
+      console.log(newPost); 
+      //console.log(proxy);
+     const res= await axios.post("/post",newPost)
+     
+      window.location.replace("/");
+      //window.location.replace("/post/" + res.data._id);
+    }catch(err){
+      console.log(err);
+     }
+      
+    }
   return (
     <div className="write">
       {file && (

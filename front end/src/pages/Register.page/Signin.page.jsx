@@ -9,6 +9,8 @@ export default function Signin() {
   const passwordRef = useRef();
   const { user , dispatch, isFetching } = useContext(Context);
   
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
@@ -30,7 +32,7 @@ export default function Signin() {
 
     <>
    <div className="bg-loginbg
-   h-screen w-full object-contain font-adelia flex flex-col justify-center   items-end  ">
+   h-screen w-full object-contain font-sans flex flex-col justify-center   items-end  ">
 
 
     <div className=' w-96 h-4/6  mr-72 drop-shadow-xl flex flex-col gap-4'>
