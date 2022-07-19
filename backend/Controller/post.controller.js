@@ -43,8 +43,11 @@ const updatepost =  async (req, res) => {
 //DELETE POST
 const deletepost =  async (req, res) => {
   try {
+    
     const post = await Post.findById(req.params.id);
+    console.log(post.username)
     if (post.username === req.body.username) {
+    
       try {
         await post.delete();
         res.status(200).json("Post has been deleted...");

@@ -1,17 +1,23 @@
 import React from 'react'
-import { useEffect,useState } from 'react';
+import { useEffect,useState,useContext } from 'react';
 import axios from "axios";
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { Context } from "../../context/Context";
+
 export default function SinglePost() {
   const PF = "http://localhost:5000/imagesformulter/";
  
  const location = useLocation()
-
+ const { user } = useContext(Context);
+ 
  const [post,setPost]= useState({});
 
  const path=location.pathname.split("/")[2]; 
 console.log(path);
+console.log("post id"+post._id)
+console.log(post.username ===  user.data.otherdata.username)
+
  useEffect(()=>{
   const getpostbyID = async ()=>{
     const res = await axios.get("/post/"+path) 
@@ -25,7 +31,22 @@ console.log(path);
 }
 ,[path]);
 
-  return (
+
+const handleDelete=async()=>{
+  try {
+   
+    await axios.delete("/post"+"/"+path,{
+      data:{"username": post.username }
+    })
+  window.location.replace("/")
+  } catch (error) {
+    console.log(error)
+  }
+
+}
+
+
+return (
     <>
     <div className='singlePost flex-auto  max-h-full '> 
     
@@ -40,10 +61,13 @@ console.log(path);
         <div className="singlePostTitle font-varela text-5xl text-center mt-4  flex items-center ">
           
           <h1 className='flex-auto'>{post.title}</h1>
+          {post.username ===  user.data.otherdata.username &&(
           <div className="singlePostEdit float-right mr-4  flex gap-4  text-2xl ">
-            <i className="singlePostIcon far fa-edit text-green-500 cursor-pointer"></i>
-            <i className="singlePostIcon far fa-trash-alt text-red-600 cursor-pointer"></i>
+            <i className="singlePostIcon far fa-edit text-green-500 cursor-pointer" ></i>
+            <i className="singlePostIcon far fa-trash-alt text-red-600 cursor-pointer" onClick={handleDelete} ></i>
           </div>
+          )
+          }
         </div>
         <div className="singlePostInfo mt-4">
           <span className='text-orange-400 font-varelaround'>
