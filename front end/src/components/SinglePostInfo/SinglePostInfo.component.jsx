@@ -17,16 +17,20 @@ export default function SinglePost() {
   const [desc, setDesc] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
 
+ 
  const path=location.pathname.split("/")[2]; 
-//console.log(path);
-//console.log("post id"+post._id)
-//console.log(post.username ===  user.data.otherdata.username)
+console.log(path);
+console.log("post id")
+console.log(post)
+console.log(post.username ===  user.data.otherdata.username)
 
  useEffect(()=>{
   const getpostbyID = async ()=>{
     const res = await axios.get("/post/"+path) 
     console.log(res);
-    setPost(res.data)
+    setPost(res.data);
+    setTitle(res.data.title);
+    setDesc(res.data.desc);
     window.scrollTo(0,0)
   }
 
@@ -41,7 +45,7 @@ const handleDelete=async()=>{
   try {
    
     await axios.delete("/post"+"/"+path,{
-      data:{"username": post.username }
+      data:{"username":user.data.otherdata.username}
     })
   window.location.replace("/")
   } catch (error) {
@@ -52,13 +56,13 @@ const handleDelete=async()=>{
 const handleUpdate=async()=>{
   try {
     await axios.put("/post/"+path,{
-      username: post.username,
+      username:user.data.otherdata.username,
       title,
       desc,
     })
     setUpdateMode(false)
   } catch (error) {
-    
+    console.log(error)
   }
 }
 
@@ -115,10 +119,13 @@ return (
 
        { updateMode?
         <textarea  value={desc} onChange={(e) => setDesc(e.target.value)} className=' w-full h-80 text-slate-400 text-xl border-2 border-gray-400 rounded-md '/>
-        :
+        :(
+        <>
         <p className="singlePostDesc mt-4 p-4 leading-1 text-gray-500 text-xl  first-letter:text-4xl first-letter:font-bold">
          {desc}
         </p>
+        </>
+        )
         }
 
           {updateMode && (

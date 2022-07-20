@@ -11,7 +11,7 @@ export default function HomePage() {
 
   const [posts, setPosts] = useState([]);
  const {search}= useLocation();
- console.log(search);
+ //console.log(search);
  
   useEffect(() => {
     const fetchPosts = async () => {

@@ -19,7 +19,9 @@ const updateuser= async (req, res) => {
         },
         { new: true }
       );
-      res.status(200).json(updatedUser);
+      res.status(200).json({data:{
+        otherdata:updatedUser
+      }});
     } catch (err) {
       res.status(500).json(err);
     }

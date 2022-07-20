@@ -9,7 +9,8 @@ export default function Navbar () {
   const handleLogout=()=>{
     dispatch({ type: "LOGOUT" }); 
   }
-
+  const PF = "http://localhost:5000/imagesformulter/";
+ 
 
   return (
 
@@ -44,16 +45,21 @@ export default function Navbar () {
       </div>
 
       <div className="topRight  flex justify-around flex-auto items-center font-sans text-xl h-16 w-16 ">
-      {
-          user&&<div className='profilePicture cursor-pointer h-16 w-16  object-center 
+      
+
+        <Link to="/settings">
+         {user&&<div className='profilePicture cursor-pointer h-16 w-16  object-center 
         rounded-full border-2 border-black '>
             
             <img  className="object-cover object-center  h-full w-full rounded-full"
-            src={user.data.otherdata.profilePic}
+            src={PF+user.data.otherdata.profilePic}
             alt="person" />
           
         </div>
-         }
+}
+        </Link>
+         
+         
 
         <div>
             <ul className='text flex gap-4'>
