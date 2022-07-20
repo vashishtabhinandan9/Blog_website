@@ -20,9 +20,9 @@ export default function Settings() {
     dispatch({ type: "UPDATE_START" });
     const updatedUser = {
       userId: user.data.otherdata._id,
-      username,
-      email,
-      password,
+      "username":username,
+      "email":email,
+      "password":password
     };
     if (file) {
       const data = new FormData();
@@ -39,6 +39,7 @@ export default function Settings() {
        updatedUser
        );
 
+  
        
        console.log(res.data)
        console.log(updatedUser)
@@ -83,7 +84,7 @@ export default function Settings() {
           <label>Username</label>
           <input className='border-b-2 border-gray-100 pl-4' type="text"
            onChange={(e) => setUsername(e.target.value)}
-          placeholder={user.data.otherdata.username} 
+           placeholder={user.data.otherdata.username} 
           name="name" />
           <label>Email</label>
           <input className='border-b-2 border-gray-100 pl-4' 
