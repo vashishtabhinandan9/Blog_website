@@ -4,6 +4,7 @@ env.config()
 const multer = require("multer");
 const router= require("express").Router()
 const path = require('path');
+const cors= require('cors')
 
 const dbconnection = require("./mongo");
 
@@ -13,17 +14,37 @@ const app= express();
 app.use("/imagesformulter", express.static(path.join(__dirname, "/imagesformulter")));
 app.use(express.json());
 
+/**
+ * const allowedDomains = ['http://localhost:3000/api', 
+'http://localhost:5000/api', 
+'https://daily-creative.herokuapp.com/api/']
+**/
+app.use(cors({
+ origin: "*",
+    credentials: true,
+
+}));
+
+
+
 const indexrouter= require('./Routes/index.route')
 app.use('/api', indexrouter);
-
-
-
-
 
   //host
 console.log("hfaeowh");
 
-app.listen(5000,()=>{
+if ( process.env.NODE_ENV == "production"){
+  const path = require("path");
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+  app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname, '/frontend/build', 'index.html'));
+  })
+}
+
+
+
+
+app.listen(process.env.PORT || 5000,()=>{
   
     console.log("server up");
 })

@@ -4,3 +4,4 @@ node_modules
 scope.txt
 .gitignore
 imagesformulter
+/front end/node_modules
