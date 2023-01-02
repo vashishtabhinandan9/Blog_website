@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect,useState,useContext } from 'react';
 import axios from "axios";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Context } from "../../context/Context";
 import {axiosInstance} from '../../config';
@@ -17,13 +17,19 @@ export default function SinglePost() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
+  const navigate=useNavigate()
+  
+  
+  var rightuser;
 
- 
+  if(user) { rightuser = post.username ===  user.data.otherdata.username}
+ else rightuser=false;
+
  const path=location.pathname.split("/")[2]; 
 //console.log(path);
 console.log("post id "+ path)
 console.log(post)
-console.log(post.username ===  user.data.otherdata.username)
+if(user) console.log(post.username ===  user.data.otherdata.username)
 const getpostbyID = async ()=>{
   const res = await axiosInstance.get("/post/"+path) 
   console.log("1st   "+ res);
@@ -34,7 +40,6 @@ const getpostbyID = async ()=>{
 }
  useEffect(()=>{
  
-
   getpostbyID();
  
 }
@@ -48,7 +53,9 @@ const handleDelete=async()=>{
     await axiosInstance.delete("/post"+"/"+path,{
       data:{"username":user.data.otherdata.username}
     })
-  window.location.replace("/")
+    navigate('/')
+
+    //window.location.replace("/")
   } catch (error) {
     console.log(error)
   }
@@ -93,7 +100,7 @@ return (
         :(
           <>
           <h1 className='flex-auto'>{title}</h1>
-          {post.username ===  user.data.otherdata.username &&(
+          {rightuser &&(
           <div className="singlePostEdit float-right mr-4  flex gap-4  text-2xl ">
             <i className="singlePostIcon far fa-edit text-green-500 cursor-pointer"  
             onClick={() => setUpdateMode(true)} ></i>

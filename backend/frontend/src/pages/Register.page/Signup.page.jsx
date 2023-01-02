@@ -1,7 +1,7 @@
  import React from 'react'
  
 import "./Signup.style.css"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 import axios from 'axios';
 import { axiosInstance } from '../../config';
@@ -12,36 +12,31 @@ import { axiosInstance } from '../../config';
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+  const navigate=useNavigate();
 
   
-
   
 
   const handleSubmit= async (e)=>{
-
    e.preventDefault();//this prevent the default code
    setError(false);
-
    if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
     //M.toast({html: "invalid email",classes:"#c62828 red darken-3"})
     return
 }
-  
     try {
       const res = await axiosInstance.post("/register", {
         username,
         email,
         password,
       });
-      res.data && window.location.replace("/login");
+      res.data && navigate("/login");
+     // window.location.replace('/login')
     } catch (err) {
       setError(true);
       console.log(err)
     }
-
 }
-
-
    return (
     <>
        <div className="register" onSubmit={handleSubmit}>
@@ -61,20 +56,14 @@ import { axiosInstance } from '../../config';
         />
         <button className="registerButton" type='submit'>Register</button>
       </form>
-
-    
       <button className="registerLoginButton">
       <Link className='link' to="/login">
         Login
         </Link>
         </button>
-     
         {error && <span style={{color:"red", marginTop:"10px"}}>Something went wrong!</span>}  
     </div>
-    
     </> 
-
-
    )
  }
  

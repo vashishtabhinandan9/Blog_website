@@ -1,7 +1,4 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
-  "main": "index.js",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
@@ -12,7 +9,14 @@
     "nodemon": "^2.0.19",
     "path": "^0.12.7"
   },
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
   "devDependencies": {},
+  "engines": {
+    "node": "14.17.4",
+    "npm": "6.14.14"
+  },
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",

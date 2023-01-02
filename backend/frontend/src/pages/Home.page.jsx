@@ -4,7 +4,7 @@ import HomeHeader from '../components/Header/HomeHeader.component'
 import Posts from '../components/Posts/Posts.component'
 import Sidebar from '../components/Sidebar/Sidebar.component'
 
-import {axios,AxiosInstance} from "axios";
+//import {Axios} from "axios";
 import { useLocation } from "react-router";
 import { axiosInstance } from "../config";
 

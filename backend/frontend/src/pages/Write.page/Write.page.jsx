@@ -6,6 +6,7 @@ import axios from "axios";
 import { Context } from "../../context/Context";
 import { axiosInstance } from "../../config";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Write() {
   const [title, setTitle] = useState("");
@@ -13,6 +14,7 @@ export default function Write() {
   const [file, setFile] = useState(null);//for image
   const { user } = useContext(Context);
   const[photourl,setPhotourl]=useState("");
+  const navigate=useNavigate();
 
   const newPost = {
     "username": user.data.otherdata.username,
@@ -28,7 +30,8 @@ const updatetomongo=async()=>{
       //console.log(proxy);
      const res= await axiosInstance.post("/post/",newPost)
      console.log(res)
-      window.location.replace("/post/" + res.data._id);//take us to the post page
+     navigate("/post/" + res.data._id) 
+     //window.location.replace("/post/" + res.data._id);//take us to the post page
     }catch(err){
       console.log(err);
      }

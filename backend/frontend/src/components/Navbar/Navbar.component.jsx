@@ -1,13 +1,15 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Context } from '../../context/Context';
 import { useContext } from 'react';
 
 export default function Navbar () {
   const {user,dispatch}=useContext(Context);
+  const navigate=useNavigate()
 
   const handleLogout=()=>{
     dispatch({ type: "LOGOUT" }); 
+    navigate("/")
   }
   const PF = "https://daily-creative.herokuapp.com/imagesformulter/";
  

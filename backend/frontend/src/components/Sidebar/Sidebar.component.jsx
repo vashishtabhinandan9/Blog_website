@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { axiosInstance } from '../../config';
+import {  axiosInstance } from '../../config';
 
 export default function Sidebar() {
 
