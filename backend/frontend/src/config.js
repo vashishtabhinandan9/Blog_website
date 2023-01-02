@@ -2,7 +2,7 @@ import axios from "axios"
 
 export const axiosInstance = axios.create({
 
-    baseURL:'https://daily-creative.vercel.app/api',
+    baseURL:'https://daily-creative.vercel.app/api/',
 
     //'http://localhost:5000/api/'
     //https://daily-creative.herokuapp.com/api/

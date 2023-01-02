@@ -43,5 +43,11 @@ if ( process.env.NODE_ENV == "production"){
 
 app.listen(process.env.PORT || 5000,()=>{
   
-    console.log("server up");
+  dbconnection()
+  .then(() => console.log("Server is running 🚀 and connected to DB"))
+  .catch((error) =>{
+  console.log(error);
+    console.log("Server is running, but database connection failed... ")
+  }
+  )
 })
