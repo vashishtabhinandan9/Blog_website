@@ -84,7 +84,7 @@ const login = async (req, res) => {
                             message: "User Login successfully",
                             data: {
                                 otherdata
-                        
+                            
                             }
                         })    
                     }
