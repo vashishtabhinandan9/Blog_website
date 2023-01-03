@@ -18,7 +18,7 @@ export const ContextProvider = ({ children }) => {
 
   return (
     <Context.Provider
-      value={{//alue is what you want to be provided all around the 
+      value={{//value is what you want to be provided all around the 
         user: state.user,
         isFetching: state.isFetching,
         error: state.error,
